@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+
+  redpanda-0:
+    container_name: redpanda-0
+    image: docker.vectorized.io/vectorized/redpanda:latest
+    command:
+    - redpanda start
+    - --smp 1
+    - --memory 1G
+    volumes:
+    - ./redpanda-config/redpanda-0:/etc/redpanda
+    - ./redpanda-data/redpanda-0:/var/lib/redpanda/data
+    - ./redpanda-config/certs:/certs
+    ports:
+    - 9092:9092
+    - 9644:9644
+    - 8081:8081
+    - 8082:8082
+
+  redpanda-1:
+    container_name: redpanda-1
+    image: docker.vectorized.io/vectorized/redpanda:latest
+    command:
+    - redpanda start
+    - --smp 1
+    - --memory 1G
+    volumes:
+    - ./redpanda-config/redpanda-1:/etc/redpanda
+    - ./redpanda-data/redpanda-1:/var/lib/redpanda/data
+    - ./redpanda-config/certs:/certs
+    ports:
+    - 9192:9192
+    - 9744:9744
+    - 8181:8181
+    - 8182:8182
+
+  redpanda-2:
+    container_name: redpanda-2
+    image: docker.vectorized.io/vectorized/redpanda:latest
+    command:
+    - redpanda start
+    - --smp 1
+    - --memory 1G
+    volumes:
+    - ./redpanda-config/redpanda-2:/etc/redpanda
+    - ./redpanda-data/redpanda-2:/var/lib/redpanda/data
+    - ./redpanda-config/certs:/certs
+    ports:
+    - 9292:9292
+    - 9844:9844
+    - 8281:8281
+    - 8282:8282
+
